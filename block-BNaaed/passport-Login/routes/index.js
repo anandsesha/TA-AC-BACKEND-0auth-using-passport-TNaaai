@@ -21,10 +21,18 @@ router.get('/auth/github', passport.authenticate('github'));
 // GitHub will get back on this route
 router.get(
   '/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/faliure' }),
+  passport.authenticate('github', {
+    failureRedirect: '/failure',
+  }),
   (req, res, next) => {
     res.redirect('/success');
   }
 );
+
+router.get('/logout', (req, res, next) => {
+  req.session.destroy();
+  res.clearCookie('connect.sid');
+  res.redirect('/');
+});
 
 module.exports = router;
