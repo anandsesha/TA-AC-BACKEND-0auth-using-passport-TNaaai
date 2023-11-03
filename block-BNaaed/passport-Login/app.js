@@ -14,6 +14,7 @@ require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const passport = require('passport');
 
 var app = express();
 
@@ -50,6 +51,11 @@ app.use(
     }),
   })
 );
+
+//Intializes Passport for incoming requests, allowing authentication strategies to be applied
+app.use(passport.initialize());
+// Middleware that will restore login state from a session
+app.use(passport.session());
 
 app.use(flash());
 
