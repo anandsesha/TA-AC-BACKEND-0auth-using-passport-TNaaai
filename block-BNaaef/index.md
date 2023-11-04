@@ -10,3 +10,4 @@ Implement `google` and `github` authentication in the blog application created a
   - a logged user can edit/delete his/her article/comment
 
 - implement logout
+  das
